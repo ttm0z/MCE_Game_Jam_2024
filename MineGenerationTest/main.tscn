@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyf6tv8c3gg85"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_nd4ck"]
+[ext_resource type="PackedScene" uid="uid://dd00siofg06fd" path="res://mine_tiles.tscn" id="2_v0oxd"]
+[ext_resource type="PackedScene" uid="uid://ba67vkawbjynp" path="res://player.tscn" id="3_yhyps"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_nd4ck")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="mineTiles" parent="." instance=ExtResource("2_v0oxd")]
+
+[node name="player" parent="." instance=ExtResource("3_yhyps")]
+scale = Vector2(0.25, 0.25)

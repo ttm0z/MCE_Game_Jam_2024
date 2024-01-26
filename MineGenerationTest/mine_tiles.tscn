@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dd00siofg06fd"]
+
+[ext_resource type="TileSet" uid="uid://ba7nadeji7quw" path="res://mineTileset.tres" id="1_hjjl8"]
+[ext_resource type="Script" path="res://mine_tiles.gd" id="2_yhnee"]
+
+[node name="mineTiles" type="TileMap"]
+scale = Vector2(0.25, 0.25)
+tile_set = ExtResource("1_hjjl8")
+format = 2
+script = ExtResource("2_yhnee")
