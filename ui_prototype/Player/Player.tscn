@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://rdp4pqn1sxa3"]
+
+[ext_resource type="Texture2D" uid="uid://c0kyqy17xdetg" path="res://assets/colored-transparent_packed.png" id="1_lc10e"]
+
+[node name="Player" type="Area2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_lc10e")
+region_rect = Rect2(400, 16, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
