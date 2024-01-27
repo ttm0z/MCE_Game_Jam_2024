@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://vk1pc14f27qt"]
+
+[ext_resource type="Texture2D" uid="uid://wdu3hxdrsfw" path="res://icon.svg" id="1_h5wv4"]
+[ext_resource type="Texture2D" uid="uid://bvdwod5onb0hd" path="res://glow.png" id="2_agn4m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kejs5"]
+size = Vector2(128.085, 62.9153)
+
+[node name="campfire" type="Sprite2D"]
+z_index = 31
+texture = ExtResource("1_h5wv4")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+shadow_enabled = true
+texture = ExtResource("2_agn4m")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-0.0422363, 31.4577)
+shape = SubResource("RectangleShape2D_kejs5")
