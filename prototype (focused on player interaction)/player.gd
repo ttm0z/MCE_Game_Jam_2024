@@ -6,6 +6,7 @@ extends CharacterBody2D
 var treesInAreaArray = []
 var currentlyHeldLog = null
 var logsInArea = []
+var nearCampfire = false
 
 func _process(delta):
 	z_index = int(position.y/10)
@@ -13,11 +14,13 @@ func _process(delta):
 	if Input.is_action_just_pressed("swing_axe") and treesInAreaArray.size()>0:
 		treesInAreaArray[-1].takeDamage()
 	if Input.is_action_just_pressed("pickup") and currentlyHeldLog == null and logsInArea.size()>0:
-		currentlyHeldLog = logsInArea[-1]
-		logsInArea[-1].followPlayer = true
-		speed = 100
+		if is_instance_valid(logsInArea[-1]):
+			print(logsInArea[-1])
+			currentlyHeldLog = logsInArea[-1]
+			logsInArea[-1].followPlayer = true
+			speed = 100
 	elif Input.is_action_just_pressed("pickup") and currentlyHeldLog != null:
-		currentlyHeldLog.drop()
+		currentlyHeldLog.drop(nearCampfire)
 		logsInArea.insert(0,currentlyHeldLog)
 		logsInArea.remove_at(len(logsInArea)-1)
 		currentlyHeldLog = null
@@ -39,6 +42,8 @@ func _on_area_2d_area_entered(area):
 		#print(treesInAreaArray)
 	elif area.is_in_group("log"):
 		logsInArea.append(area.get_parent())
+	elif area.is_in_group("campfire"):
+		nearCampfire = true
 		
 
 func _on_area_2d_area_exited(area):
@@ -47,3 +52,5 @@ func _on_area_2d_area_exited(area):
 			if treesInAreaArray[i] == area.get_parent():
 				treesInAreaArray.remove_at(i)
 				break
+	elif area.is_in_group("campfire"):
+		nearCampfire = false

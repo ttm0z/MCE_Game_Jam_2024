@@ -11,6 +11,11 @@ func _process(delta):
 	if followPlayer == true:
 		position = Global.playerPos
 		
-func drop():
-	followPlayer = false
-	position.y += 10
+func drop(nearCampfire):
+	if nearCampfire == false:
+		followPlayer = false
+		position.y += 10
+	else:
+		#put in fire
+		Global.campfire.grow()
+		queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bwolsf3lffylp"]
+[gd_scene load_steps=12 format=3 uid="uid://bwolsf3lffylp"]
 
 [ext_resource type="Texture2D" uid="uid://vdxxn5y2jwi" path="res://assets/fire/fire0.png" id="1_q0vte"]
 [ext_resource type="Script" path="res://campfire.gd" id="1_tqtil"]
@@ -49,6 +49,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iu6by"]
+radius = 9.67241
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7r734"]
+radius = 29.1548
 
 [node name="campfire" type="Node2D" node_paths=PackedStringArray("sprite")]
 z_index = 31
@@ -56,7 +60,6 @@ script = ExtResource("1_tqtil")
 sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(32, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_piccg")
 animation = &"new_animation"
@@ -69,6 +72,18 @@ texture = ExtResource("5_qq4cp")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(32, 38)
+position = Vector2(-1, 38)
 scale = Vector2(3, 3)
 shape = SubResource("CircleShape2D_iu6by")
+
+[node name="Area2D" type="Area2D" parent="." groups=["campfire"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 38)
+shape = SubResource("CircleShape2D_7r734")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
