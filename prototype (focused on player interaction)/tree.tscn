@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://cbboekyrsaiyk"]
 
 [ext_resource type="Script" path="res://tree.gd" id="1_v0aek"]
-[ext_resource type="Texture2D" uid="uid://wdu3hxdrsfw" path="res://icon.svg" id="1_ys1y4"]
+[ext_resource type="Texture2D" uid="uid://be6du7hx80p4p" path="res://assets/tree/trees0.png" id="2_1l6eu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i2beg"]
-size = Vector2(32, 64)
+size = Vector2(32, 12)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_cppw2"]
 polygon = PackedVector2Array(-16, 64, 45, 64, 44, 0, -16, 0)
@@ -12,27 +12,21 @@ polygon = PackedVector2Array(-16, 64, 45, 64, 44, 0, -16, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gwfok"]
 size = Vector2(32, 63)
 
-[node name="tree" type="Node2D"]
+[node name="tree" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_v0aek")
+sprite = NodePath("Sprite")
 
-[node name="Icon" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 1)
-texture = ExtResource("1_ys1y4")
-
-[node name="Icon2" type="Sprite2D" parent="."]
-position = Vector2(0, 48)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_ys1y4")
-
-[node name="Icon3" type="Sprite2D" parent="."]
-position = Vector2(-1, -42)
-scale = Vector2(0.476563, 0.507813)
-texture = ExtResource("1_ys1y4")
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(-1, 13)
+scale = Vector2(1, 1.13)
+texture = ExtResource("2_1l6eu")
+region_enabled = true
+region_rect = Rect2(192, 0, 94.5, 96)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 32)
+position = Vector2(0, 26)
 shape = SubResource("RectangleShape2D_i2beg")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
