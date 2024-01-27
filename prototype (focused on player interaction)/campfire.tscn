@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_nbwbx"]
 
 [node name="campfire" type="Sprite2D"]
-z_index = 31
+z_index = 28
 texture = ExtResource("1_h5wv4")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]

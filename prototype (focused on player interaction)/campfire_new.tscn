@@ -51,6 +51,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_iu6by"]
 
 [node name="campfire" type="Node2D" node_paths=PackedStringArray("sprite")]
+z_index = 31
 script = ExtResource("1_tqtil")
 sprite = NodePath("AnimatedSprite2D")
 
