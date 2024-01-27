@@ -114,7 +114,7 @@ position = Vector2(551, 87)
 
 [node name="campfire" parent="." instance=ExtResource("4_fpqq2")]
 z_index = 28
-position = Vector2(530, 283)
+position = Vector2(572, 318)
 scale = Vector2(0.9, 0.9)
 
 [node name="camera" type="Camera2D" parent="."]

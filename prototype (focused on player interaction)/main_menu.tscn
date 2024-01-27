@@ -1,0 +1,106 @@
+[gd_scene load_steps=14 format=3 uid="uid://bvx3p1g8a6sty"]
+
+[ext_resource type="FontFile" uid="uid://hwo5nrksda5c" path="res://assets/fonts/FontdinerSwanky-Regular.ttf" id="1_651wh"]
+[ext_resource type="Texture2D" uid="uid://p55qmrs673mh" path="res://assets/misc/snow.png" id="1_hppa1"]
+[ext_resource type="Script" path="res://main_menu.gd" id="1_ucp4o"]
+[ext_resource type="Shader" path="res://flame.gdshader" id="4_yfqhe"]
+[ext_resource type="Texture2D" uid="uid://bvdwod5onb0hd" path="res://glow.png" id="5_0ayc1"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_68p7l"]
+noise_type = 0
+frequency = 0.0222
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lnvb3"]
+noise = SubResource("FastNoiseLite_68p7l")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cxvp5"]
+shader = ExtResource("4_yfqhe")
+shader_parameter/color1 = Color(0.768627, 0.756863, 1, 1)
+shader_parameter/color2 = Color(0.968627, 0.686275, 0.980392, 1)
+shader_parameter/brightness = 0.0
+shader_parameter/timeOffset = 1.0
+shader_parameter/timeRate = 1.0
+shader_parameter/noiseAmmount = 0.5
+shader_parameter/offsetX = 0.0
+shader_parameter/flickerT = 0.6
+shader_parameter/noise = SubResource("NoiseTexture2D_lnvb3")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_44sdw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4hej0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tnsmh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mp5pa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4hut7"]
+
+[node name="main_menu" type="Node2D"]
+script = ExtResource("1_ucp4o")
+
+[node name="Snow" type="Sprite2D" parent="."]
+position = Vector2(1.125, -1.99999)
+scale = Vector2(8.90957, 5.03521)
+texture = ExtResource("1_hppa1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_cxvp5")
+offset_left = -758.0
+offset_top = -535.0
+offset_right = 691.0
+offset_bottom = 613.0
+
+[node name="GridContainer" type="GridContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -368.5
+offset_top = -127.5
+offset_right = 368.5
+offset_bottom = 127.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="GridContainer"]
+modulate = Color(0.341176, 0, 0, 1)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_651wh")
+theme_override_font_sizes/font_size = 144
+text = "Fuel the Fire"
+
+[node name="Button" type="Button" parent="GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.282353, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.266667, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.545098, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0.282353, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.282353, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.282353, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.282353, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0.282353, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0.282353, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0.282353, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.282353, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0.282353, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0.282353, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_651wh")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_44sdw")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4hej0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_tnsmh")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mp5pa")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4hut7")
+text = "Start"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -5.96046e-08)
+scale = Vector2(2.15699, 2.15699)
+texture = ExtResource("5_0ayc1")
+
+[connection signal="pressed" from="GridContainer/Button" to="." method="_on_button_pressed"]

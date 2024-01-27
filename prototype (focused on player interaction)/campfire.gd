@@ -18,7 +18,7 @@ func grow():
 	#Global.camera.zoom/=1.2
 	prevScales.append(scale)
 	scale *= ((1+growFactor/4))
-	Global.camera.zoom /= ((1+growFactor/4))
+	#Global.camera.zoom /= ((1+growFactor/4))
 	
 	growFactor/=2
 	
@@ -31,7 +31,7 @@ func grow():
 
 func _on_timer_timeout():
 	scale -= Vector2(0.01,0.01)
-	Global.camera.zoom += Vector2(0.01,0.01)
+	#Global.camera.zoom += Vector2(0.01,0.01)
 	
 	if scale.x<0.5:
 		#fire stops
