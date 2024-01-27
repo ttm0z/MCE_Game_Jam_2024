@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Log game"
+run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -21,6 +22,10 @@ Global="*res://global.gd"
 [display]
 
 window/stretch/mode="viewport"
+
+[dotnet]
+
+project/assembly_name="Log game"
 
 [input]
 

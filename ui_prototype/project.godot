@@ -15,6 +15,10 @@ run/main_scene="res://tileset_1.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[dotnet]
+
+project/assembly_name="mce_game_jam"
+
 [input]
 
 left={
