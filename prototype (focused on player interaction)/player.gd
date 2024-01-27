@@ -15,10 +15,13 @@ func _process(delta):
 	if Input.is_action_just_pressed("pickup") and currentlyHeldLog == null and logsInArea.size()>0:
 		currentlyHeldLog = logsInArea[-1]
 		logsInArea[-1].followPlayer = true
+		speed = 100
 	elif Input.is_action_just_pressed("pickup") and currentlyHeldLog != null:
 		currentlyHeldLog.drop()
+		logsInArea.insert(0,currentlyHeldLog)
+		logsInArea.remove_at(len(logsInArea)-1)
 		currentlyHeldLog = null
-		
+		speed = 200
 
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
